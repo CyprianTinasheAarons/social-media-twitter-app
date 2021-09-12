@@ -48,6 +48,23 @@ class UsersController < ApplicationController
     Micropost.where("user_id = ?", id)
   end
 
+  def following
+    @title = 'Following'
+    @user = User.find(parmas[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def following
+    @title = 'Followers'
+    @user = User.find(parmas[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+
+  
+
   private
 
     def user_params

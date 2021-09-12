@@ -3,8 +3,14 @@
 <h1>
 <%= gravatar_for @user %> <%= @user.name %>
 </h1> </section>
+<section class="user_stats">
+<h2>Stats</h2>
+<%= render 'shared/stats' %>
+
 </aside>
+
 <div class="col-md-8">
+   <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
     <h3> Microposts (<%= @user.microposts.count %>)</h3>
     <ol class="microposts">
